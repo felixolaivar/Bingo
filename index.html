@@ -15,9 +15,6 @@ body{
     background:#111;
     color:white;
     text-align:center;
-    position:relative;
-    z-index:1;
-
     background:
         linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
         url('https://img.magnific.com/free-vector/red-abstract-geometric-shape-with-grid-line-pattern_1409-1890.jpg');
@@ -26,88 +23,51 @@ body{
     background-attachment:fixed;
 }
 
+/* HEADER */
+h2{font-size:30px;margin:0;}
+
 /* SWITCH */
-.switcher{
-    margin-top:25px;
-    position:relative;
-    z-index:2;
-}
-
-h2{
-    font-size:30px;
-    margin:0;
-    line-height:1;
-}
-
+.switcher{margin-top:20px;}
 .switcher button{
-    padding:10px 20px;
+    padding:10px 15px;
+    margin:5px;
     border:none;
     border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-    margin:0 5px;
     background:#333;
     color:white;
-}
-
-.switcher button:hover{
-    background:linear-gradient(45deg,#ff9800,#ff3d00);
+    cursor:pointer;
 }
 
 /* GAME */
-.game{
-    display:none;
-    position:relative;
-    z-index:2;
-}
-
-.game.active{
-    display:block;
-}
+.game{display:none;}
+.game.active{display:block;}
 
 /* BOARD */
 .board{
     display:grid;
-    grid-template-columns:repeat(5, minmax(0, 1fr));
+    grid-template-columns:repeat(5,1fr);
     gap:6px;
-    justify-content:center;
-    margin:auto;
-    width:100%;
     max-width:500px;
+    margin:auto;
 }
 
 .song{
     aspect-ratio:1/1;
+    background:#222;
+    color:white;
     border:none;
     border-radius:10px;
-    background:#242424;
-    color:white;
+    font-size:clamp(10px,2.5vw,14px);
+    font-weight:bold;
     cursor:pointer;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    padding:4px;
     text-align:center;
-
-    font-size:clamp(10px, 2.5vw, 16px);
-    font-weight:700;
-    line-height:1.1;
-
-    transition:0.25s;
-    word-break:break-word;
+    padding:4px;
 }
 
-.song:hover{
-    background:linear-gradient(45deg,#ff9800,#ff3d00,#ff0066);
-    transform:scale(1.05);
-    color:black;
-}
-
-.song.active{
-    background:#ff0000;
-}
+.song.active{background:red;}
 
 /* PATTERNS */
 .patternsUI{
@@ -115,53 +75,37 @@ h2{
     flex-wrap:wrap;
     justify-content:center;
     gap:8px;
-    margin-bottom:10px;
+    margin:10px 0;
 }
 
 .patternBox{
-    background:rgba(255,255,255,0.08);
-    padding:8px;
-    border-radius:10px;
+    width:80px;
+    height:80px;
+    background:rgba(255,255,255,0.1);
+    border-radius:8px;
     font-size:8px;
-    width:100px;
-    height:100px;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:space-between;
-    overflow:hidden;
 }
 
 .patternGrid{
     display:grid;
-    grid-template-columns:repeat(5,8px);
+    grid-template-columns:repeat(5,6px);
     gap:1px;
-    margin-top:5px;
-    justify-content:center;
 }
 
 .pcell{
-    width:8px;
-    height:8px;
+    width:6px;
+    height:6px;
     background:rgba(255,255,255,0.2);
-    border-radius:2px;
 }
-
-.pcell.active{
-    background:red;
-}
+.pcell.active{background:red;}
 
 .patternBox.win{
-    box-shadow:0 0 15px red;
-    transform:scale(1.05);
     border:2px solid red;
-}
-
-.winText{
-    margin-top:5px;
-    font-size:12px;
-    color:red;
-    font-weight:bold;
+    box-shadow:0 0 10px red;
 }
 
 /* POPUP */
@@ -170,24 +114,12 @@ h2{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    font-size: clamp(80px, 8vw, 180px);
-    font-weight:bold;
+    font-size:80px;
     color:red;
     opacity:0;
-    transition:0.2s;
-    text-shadow:0 0 15px white;
-    z-index:9999;
     pointer-events:none;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    white-space:nowrap;
 }
-
-#popup.show{
-    opacity:1;
-}
+#popup.show{opacity:1;}
 
 /* CONFETTI */
 canvas{
@@ -195,46 +127,6 @@ canvas{
     top:0;
     left:0;
     pointer-events:none;
-    z-index:0;
-}
-
-/* 📱 MOBILE FIX */
-@media (max-width:600px){
-
-    body{ padding:10px; }
-
-    h2{ font-size:28px; }
-
-    .board{ gap:4px; }
-
-    .song{
-        font-size:10px;
-        padding:2px;
-    }
-
-    .patternBox{
-        width:70px;
-        height:70px;
-        font-size:7px;
-    }
-
-    .patternGrid{
-        grid-template-columns:repeat(5,6px);
-    }
-
-    .pcell{
-        width:6px;
-        height:6px;
-    }
-
-    .switcher button{
-        padding:6px 10px;
-        font-size:12px;
-    }
-
-    #popup{
-        font-size:80px;
-    }
 }
 </style>
 </head>
@@ -267,28 +159,23 @@ const columns = [
 ["Doo Bi Doo","DUNGKA!","Espresso","Finesse","Fire","Fireball","Gangnam Style","Gasolina","GENTO","Get Down","Gikumot-Kumot","Girl In the Mirror","Girls Just Want to Have Fun","Give Me Everything","Gugmang Ga Aso-Aso"],
 ["Hips Dont Lie","Hot in Herre","Ilongga","Insomnia","I wanna Dance with Somebody","Kikay","Last Friday Night","Like A G6","Live While Where Young","Low","Man I Need","Marikit","Material Girl","Miss Independent","Modelong Charing"],
 ["Numb","On The Floor","Oohh Lala Baby","Party Rock Anthem","Prinsipal","Pump It","Raining in Manila","Salamin, Salamin","Sayaw Mga Choy","September","Seven","Shake It Off","Shots","Shout Out to My Ex","Single Ladies"],
-["Sk8er Boi","Solo","Super Bass","Taki Taki","Tala","That's What You Get","Touch","Toxic","Uptown Girl","Waka Waka","Wannabe","We Like to Party!","What is What is Love?","Whine Up","YMCA"]
+["Sk8er Boi","Solo","Super Bass","Taki Taki","Tala","That's What You Get","Touch","Toxic","Uptown Girl","Waka Waka","Wannabe","We Like to Party!","What is Love?","Whine Up","YMCA"]
 ];
 
-const patternsA = [
-{name:"POST STAMP", cells:[3,4,8,9]},
-{name:"CURSOR", cells:[0,1,2,5,6,10,12,18,24]},
-{name:"LETTER X", cells:[0,4,6,8,12,16,18,20,24]},
-{name:"CROSS", cells:[2,7,10,11,12,13,14,17,22]},
-{name:"PEACE", cells:[2,7,12,16,17,18,20,22,24]},
-{name:"FULL HOUSE", cells:[...Array(25).keys()]}
+const patternsA=[
+{name:"X",cells:[0,4,6,8,12,16,18,20,24]},
+{name:"CROSS",cells:[2,7,10,11,12,13,14,17,22]},
+{name:"FULL",cells:[...Array(25).keys()]}
 ];
 
-const patternsB = [
-{name:"4 CORNERS", cells:[0,4,20,24]},
-{name:"SMALL BOX", cells:[6,7,8,11,12,13,16,17,18]},
-{name:"SEVEN", cells:[0,1,2,3,4,8,12,16,20]},
-{name:"DIAMOND", cells:[2,6,8,10,14,16,18,22]},
-{name:"LETTER I", cells:[0,1,2,3,4,7,12,17,20,21,22,23,24]},
-{name:"FULL HOUSE", cells:[...Array(25).keys()]}
+const patternsB=[
+{name:"4 CORNERS",cells:[0,4,20,24]},
+{name:"BOX",cells:[6,7,8,11,12,13,16,17,18]},
+{name:"FULL",cells:[...Array(25).keys()]}
 ];
 
-function createGame(boardId, patternId, patterns){
+function createGame(boardId,patternId,patterns){
+
 let active=new Set();
 let triggered=new Set();
 let patternBoxes=[];
@@ -319,6 +206,7 @@ function build(){
                 active.add(i);
                 btn.classList.add("active");
             }
+            check();
         };
 
         board.appendChild(btn);
@@ -328,16 +216,95 @@ function build(){
 function renderPatterns(){
     const box=document.getElementById(patternId);
     box.innerHTML="";
+    patternBoxes=[];
+
+    patterns.forEach((p,i)=>{
+        const div=document.createElement("div");
+        div.className="patternBox";
+
+        const grid=document.createElement("div");
+        grid.className="patternGrid";
+
+        for(let j=0;j<25;j++){
+            const cell=document.createElement("div");
+            cell.className="pcell";
+            if(p.cells.includes(j)) cell.classList.add("active");
+            grid.appendChild(cell);
+        }
+
+        div.appendChild(document.createTextNode(p.name));
+        div.appendChild(grid);
+
+        box.appendChild(div);
+        patternBoxes.push(div);
+    });
+}
+
+function check(){
+    const selected=[...active];
+
+    patterns.forEach((p,i)=>{
+        const win=p.cells.every(x=>selected.includes(x));
+
+        if(win && !triggered.has(p.name)){
+            triggered.add(p.name);
+            showWin(p.name);
+            startConfetti();
+            patternBoxes[i].classList.add("win");
+        }
+    });
 }
 
 build();
 renderPatterns();
+
 }
 
 function showGame(n){
 document.getElementById("game1").classList.remove("active");
 document.getElementById("game2").classList.remove("active");
 document.getElementById("game"+n).classList.add("active");
+}
+
+function showWin(name){
+const popup=document.getElementById("popup");
+popup.innerHTML=name;
+popup.classList.add("show");
+setTimeout(()=>popup.classList.remove("show"),3000);
+}
+
+/* CONFETTI */
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let conf=[],run=false;
+
+function startConfetti(){
+conf=[];
+run=true;
+
+for(let i=0;i<120;i++){
+conf.push({x:Math.random()*canvas.width,y:Math.random()*-canvas.height,r:3,c:`hsl(${Math.random()*360},100%,50%)`,s:2+Math.random()*3});
+}
+
+animate();
+setTimeout(()=>{run=false;ctx.clearRect(0,0,canvas.width,canvas.height);},3000);
+}
+
+function animate(){
+if(!run)return;
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+conf.forEach(p=>{
+ctx.fillStyle=p.c;
+ctx.fillRect(p.x,p.y,p.r,p.r);
+p.y+=p.s;
+if(p.y>canvas.height)p.y=0;
+});
+
+requestAnimationFrame(animate);
 }
 
 createGame("board1","patterns1",patternsA);
