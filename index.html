@@ -40,8 +40,6 @@ margin:0;font-size:24px;
     display:block;
     filter:drop-shadow(0 0 10px rgba(255,255,255,0.5));
 }
-
-
 /* SWITCH */
 .switcher{margin-top:10px;}
 .switcher button{
@@ -76,23 +74,25 @@ margin:0;font-size:24px;
 
     background:rgba(255,255,255,0.85);
     border-radius:10px;
-    padding:4px;
+    padding:5px;
     border:2px solid transparent;
 
     display:flex;
     flex-direction:column;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
+    gap:5px;
 
     color:black;
-    font-size:clamp(7px,2vw,10px);
     font-weight:bold;
 }
+
 
 /* title */
 .patternBox div:first-child{
     font-size:clamp(6px,1.5vw,10px);
     font-weight:bold;
+    text-align:center;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -103,8 +103,8 @@ margin:0;font-size:24px;
 .patternGrid{
     display:grid;
     grid-template-columns:repeat(5,1fr);
-    gap:1px;
-    width:55%;
+    gap:2px;
+    width:75%;
     aspect-ratio:1/1;
 }
 
