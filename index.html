@@ -161,21 +161,55 @@ margin:0;font-size:24px;
     position:fixed;
     top:50%;
     left:50%;
-    transform:translate(-50%,-50%);
-    font-size:clamp(40px,7vw,80px);
-    font-weight:bold;
+    transform:translate(-50%,-50%) scale(0.5);
+
+    width:90%;
+    max-width:450px;
+
+    padding:15px 20px;
+    border-radius:20px;
+
+    background:rgba(0,0,0,0.75);
+    border:3px solid red;
+
+    font-size:clamp(28px,8vw,70px);
+    font-weight:900;
+
     color:red;
+    text-align:center;
+
     opacity:0;
     pointer-events:none;
-    transition:0.2s;
+
+    transition:0.3s ease;
+    z-index:999;
 }
-#popup.show{opacity:1;}
+
+
+#popup.show{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+#popup div,
+.winName{
+    line-height:0.9;
+    margin:0;
+    padding:0;
+}
+
 
 .winName{
+    display:inline-block;
     color:white;
-    text-shadow:0 0 10px black, 0 0 25px red;
-}
 
+    text-shadow:
+        0 0 5px black,
+        0 0 15px red,
+        0 0 30px red;
+
+    word-break:break-word;
+}
 /* CONFETTI */
 canvas{
     position:fixed;
@@ -332,12 +366,23 @@ document.getElementById("game"+n).classList.add("active");
 }
 
 function showWin(name){
-const popup=document.getElementById("popup");
-popup.innerHTML=`🔥 <span class="winName">${name}</span> 🔥`;
-popup.classList.add("show");
-setTimeout(()=>popup.classList.remove("show"),2500);
-}
+    const popup=document.getElementById("popup");
 
+    popup.innerHTML=`
+        <div>BINGO!</div>
+        <span class="winName">${name}</span>
+    `;
+
+    popup.classList.remove("show");
+
+    setTimeout(()=>{
+        popup.classList.add("show");
+    },50);
+
+    setTimeout(()=>{
+        popup.classList.remove("show");
+    },2500);
+}
 /* CONFETTI */
 const canvas=document.getElementById("confetti");
 const ctx=canvas.getContext("2d");
