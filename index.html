@@ -246,12 +246,20 @@ canvas{
 
 <script>
 
-const columns = [
+const columns1 = [
 ["2012","Angel","APT","Ask For More","Baby","Basket Case","Beautiful Girls","Buttons","Cebuana","Celebration","Cherry On Top","Come On Over","Dahil Sayo","Dancing Queen","Danza Kuduro"],
 ["Doo Bi Doo","DUNGKA!","Espresso","Finesse","Fire","Fireball","Gangnam Style","Gasolina","GENTO","Get Down","Gikumot-Kumot","Girl In the Mirror","Girls Just Want to Have Fun","Give Me Everything","Gugmang Ga Aso-Aso"],
 ["Hips Dont Lie","Hot in Herre","Ilongga","Insomnia","I wanna Dance with Somebody","Kikay","Last Friday Night","Like A G6","Live While Where Young","Low","Man I Need","Marikit","Material Girl","Miss Independent","Modelong Charing"],
 ["Numb","On The Floor","Oohh Lala Baby","Party Rock Anthem","Prinsipal","Pump It","Raining in Manila","Salamin, Salamin","Sayaw Mga Choy","September","Seven","Shake It Off","Shots","Shout Out to My Ex","Single Ladies"],
 ["Sk8er Boi","Solo","Super Bass","Taki Taki","Tala","That's What You Get","Touch","Toxic","Uptown Girl","Waka Waka","Wannabe","We Like to Party!","What is Love?","Whine Up","YMCA"]
+];
+
+const columns2 = [
+["22","24/7,365","A Whole New World","Ale","Bad Guy","Bagsakan","Bang Bang","Biyahe","Black Magic","Call Me Maybe","Cant Stop the Feeling","Cheap Thrills","Country Road","Crazy In Love","Debut"],
+["Dilaw","Domino","Don Romantiko","Don't Love You No More","Don't Say You Love Me","Don't Stop the Music","Dynamite","Eenie Meenie","Ehu Girl","Flowers","Geronimo","Girlfriend","Golden","Hate That I Love You","How Far I'll Go"],
+["I Don't Mind","I Gotta Feeling","I Stay In Love","IDGAF","Irreplaceable","Just Dance","Let It Go","Like Jennie","Love Drunk","Love On Top","Love Will Keep Us Alive","Me Love","Ob-La-Di, Ob-La-Da","On Bended Knee","Otso-Otso"],
+["Para Sa Iyo","Perfect Strangers","Please Please Please","Price Tag","Pyramis","Rapstar","Rewrite the Stars","Roses","Rude","Rude Boy","Sabak Daddy","Simpleng Tao","Smack That","So Easy (To Fall in Love)","Soda Pop"],
+["Starships","Style","Sun and Moon","Super Bass","Symphony","Tao Lang","Tatsulok","Tearin' Up My Heart","The Great Escape","This Is What You Came For","Tilaw Ra","Versace on the Floor","Water","We're All in This Together","Without Me"]
 ];
 
 /* ALL PATTERNS KEPT */
@@ -271,14 +279,17 @@ const patternsB = [
 {name:"FULL HOUSE",cells:[...Array(25).keys()]}
 ];
 
-function createGame(boardId,patternId,patterns){
+function createGame(boardId, patternId, patterns, columns){
+
 
 let active=new Set();
 let triggered=new Set();
 let patternBoxes=[];
 
 function build(){
-    const cols=columns.map(c=>[...c].sort(()=>Math.random()-0.5));
+
+   const cols = columns.map(c => [...c].sort(() => Math.random() - 0.5));
+
     let data=[];
 
     for(let r=0;r<5;r++){
@@ -427,8 +438,8 @@ if(p.y>canvas.height)p.y=0;
 requestAnimationFrame(animate);
 }
 
-createGame("board1","patterns1",patternsA);
-createGame("board2","patterns2",patternsB);
+createGame("board1", "patterns1", patternsA, columns1);
+createGame("board2", "patterns2", patternsB, columns2);
 
 </script>
 
